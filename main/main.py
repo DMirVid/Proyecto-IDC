@@ -32,7 +32,7 @@ anemometro.irq(trigger=Pin.IRQ_RISING, handler=contar_pulsos)
 #conectarse a una red wifi
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
-wlan.connect('Pixel8Dani', '/wifi#segura_8')
+wlan.connect('wifi', 'password')
 
 max_wait = 10
 while max_wait > 0:
