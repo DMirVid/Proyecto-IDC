@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+    influxdb:
+        build: ./influxdb
+        container_name: influxdb
+        ports:
+            - 8086:8086
+        volumes: #Para guradar los datos 
+            - /var/lib/influxdb:/var/lib/influxdb
+        restart: always
+        networks:
+            - backend
+            - frontend
