@@ -1,5 +1,3 @@
-version: "3"
-
 services:
     influxdb:
         build: ./influxdb
@@ -8,17 +6,16 @@ services:
             - 8086:8086
         volumes: #Para guradar los datos 
             - /var/lib/influxdb:/var/lib/influxdb
-        
     telegraf:
-        image: telegraf:1.34.4
+        image: telegraf
         container_name: telegraf
-        volummes: 
+        volumes: 
             - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
         links: 
-            - "container:influxdb"
+            - "influxdb"
 
     grafana: 
-        image: grafana
+        image: grafana/grafana
         container_name: grafana
         ports: 
             - 3000:3000
