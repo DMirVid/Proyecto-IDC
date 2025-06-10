@@ -6,18 +6,33 @@ services:
             - 8086:8086
         volumes: #Para guradar los datos 
             - /var/lib/influxdb:/var/lib/influxdb
+        networks:
+            - tig-net
+
     telegraf:
         image: telegraf
         container_name: telegraf
         volumes: 
-            - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+            - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
         links: 
             - "influxdb"
+        networks:
+            - tig-net
 
     grafana: 
         image: grafana/grafana
         container_name: grafana
         ports: 
             - 3000:3000
+        environment:
+            GF_SECURITY_ADMIN_USER: admin # Replace this before starting the containers
+            GF_SECURITY_ADMIN_PASSWORD: admin
+        volumes: 
+            -/var/lib/grafana:/var/lib/grafan
+        networks:
+            - tig-net
 
+    networks: 
+        tig-net:
+            driver: bridge
 
