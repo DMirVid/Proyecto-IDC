@@ -1,38 +1,28 @@
 services:
-    influxdb:
-        build: ./influxdb
-        container_name: influxdb
-        ports:
-            - 8086:8086
-        volumes: #Para guradar los datos 
-            - /var/lib/influxdb:/var/lib/influxdb
-        networks:
-            - tig-net
+  influxdb:
+    build: ./influxdb
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./influxdb:/var/lib/influxdb
 
-    telegraf:
-        image: telegraf
-        container_name: telegraf
-        volumes: 
-            - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
-        links: 
-            - "influxdb"
-        networks:
-            - tig-net
+  telegraf:
+    image: telegraf
+    container_name: telegraf
+    depends_on:
+      - influxdb
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
 
-    grafana: 
-        image: grafana/grafana
-        container_name: grafana
-        ports: 
-            - 3000:3000
-        environment:
-            GF_SECURITY_ADMIN_USER: admin # Replace this before starting the containers
-            GF_SECURITY_ADMIN_PASSWORD: admin
-        volumes: 
-            - /var/lib/grafana:/var/lib/grafana
-        networks:
-            - tig-net
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
 
-    networks: 
-        tig-net:
-            driver: bridge
+volumes:
+    grafana-storage: {}
 
