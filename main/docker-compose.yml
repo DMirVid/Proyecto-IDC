@@ -28,7 +28,7 @@ services:
             GF_SECURITY_ADMIN_USER: admin # Replace this before starting the containers
             GF_SECURITY_ADMIN_PASSWORD: admin
         volumes: 
-            -/var/lib/grafana:/var/lib/grafan
+            - /var/lib/grafana:/var/lib/grafana
         networks:
             - tig-net
 
