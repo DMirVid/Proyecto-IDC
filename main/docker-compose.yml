@@ -6,6 +6,8 @@ services:
       - "8086:8086"
     volumes:
       - ./influxdb:/var/lib/influxdb
+    networks:
+      - influxNet
 
   telegraf:
     image: telegraf
@@ -14,6 +16,8 @@ services:
       - influxdb
     volumes:
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+    networks:
+      - influxNet
 
   grafana:
     image: grafana/grafana
@@ -22,7 +26,12 @@ services:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+    networks:
+      - influxNet
 
 volumes:
     grafana-storage: {}
+
+networks:
+  influxNet: {}
 
