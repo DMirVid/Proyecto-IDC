@@ -113,6 +113,8 @@ while True:
     bmp.measure()
     presion = bmp.pressure
     altitud = bmp.altitude
+    if altitud < 0 : 
+        altitud = 0
     print("Presión:", presion / 100, "hPa")
     print("Altitud aproximada:", round(altitud, 2), "m")
     datos['altitud'] = altitud
