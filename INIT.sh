@@ -10,5 +10,5 @@ do
 done
 echo .
 sudo docker exec influxdb ./run.sh
-sudo docker edxec influxdb influx -execute "SHOW USERS"
+sudo docker exec influxdb influx -execute "SHOW USERS"
 echo Puede visualizar los datos en http://localhost:3000
