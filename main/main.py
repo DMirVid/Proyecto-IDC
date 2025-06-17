@@ -7,6 +7,7 @@ import json
 import network
 import ubinascii
 
+
 # --- Configuración WiFi ---
 SSID = 'Xiaomi 12T'
 PASSWORD = 'cy3avdk9q4u2j5c'
@@ -110,9 +111,12 @@ while True:
 
     # Lectura de presión/altitud
     bmp.measure()
-    presion = bmp.pressure
+    presion = bmp.pressure / 100
     altitud = bmp.altitude
-    print("Presión:", presion / 100, "hPa")
+    if altitud < 0 : 
+        altitud = 0
+
+    print("Presión:", presion, "hPa")
     print("Altitud aproximada:", round(altitud, 2), "m")
     datos['altitud'] = altitud
     datos['presion'] = presion
