@@ -7,6 +7,9 @@ Como característica adicional se intentará implementar una predicción de lluv
 Pasos para desplegar el sistema:
 - Abrir terminal en la carpeta del proyecto
 - Ejecutar "chmod +x INIT.sh"
-- Ejecutar "/INIT.sh"
+- Ejecutar "./INIT.sh"
 
 El sistema ya estará disponible y podrá visualizar los datos en la página web de Grafana que se mostrará despues de ejecutar INIT.sh
+Es posible que necesite usuario y contraseña.
+-Usuario: admin
+-Contraseña: admin
