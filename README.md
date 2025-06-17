@@ -11,5 +11,5 @@ Pasos para desplegar el sistema:
 
 El sistema ya estará disponible y podrá visualizar los datos en la página web de Grafana que se mostrará despues de ejecutar INIT.sh
 Es posible que necesite usuario y contraseña.
--Usuario: admin
--Contraseña: admin
+- Usuario: admin
+- Contraseña: admin
