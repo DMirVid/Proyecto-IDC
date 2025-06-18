@@ -2,7 +2,7 @@
 sudo docker rm -f $(sudo docker ps -aq)
 
 echo Iniciando contenedores
-sudo docker compose -f ./main/docker-compose.yml up -d
+sudo docker compose -f ./tig_stack/docker-compose.yml up -d
 for i in {1..10}
 do 
     echo -n .
